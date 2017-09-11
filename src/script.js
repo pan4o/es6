@@ -8,10 +8,9 @@ if (true) {
 //console.log(version); //ошибка
 
 
-var buttons = document.querySelectorAll('button'),
-	i;
+var buttons = document.querySelectorAll('button');
 
-for (i = 0; i < buttons.length; i++) {
+for (let i = 0; i < buttons.length; i++) {
 
 	buttons[i].innerText = i;
 
