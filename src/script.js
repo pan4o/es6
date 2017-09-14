@@ -77,6 +77,7 @@ function greet(name) {
 greet('Bill'); // HELLO BILL
 
 // поддерживает многострочность
+
 function createEmail(to, from, subject, message) {
 	console.log(`
 		to: ${to}
@@ -94,6 +95,7 @@ function addTwoNumbers(x,y) {
 
 addTwoNumbers(5,7);
 
+
 //тегирование в шаблонах строки
 
 function upperName(literals, value) {
@@ -102,3 +104,70 @@ function upperName(literals, value) {
 
 let person = "Tom";
 console.log(upperName `Hello ${person}`); //Hello TOM
+
+
+// parameters
+
+function sayHello (greeting, name) {
+	console.log(`${greeting} ${name}`);
+}
+
+sayHello('Hi','Bill'); //Hi Bill
+sayHello('Hi'); // Hi undefined
+sayHello(); // undefined undefined
+
+
+function sayHelloTest(greeting = 'Hello', name = 'Tom') {
+	console.log(`${greeting} ${name}`);
+}
+
+sayHelloTest(); // Hello Tom
+
+// Оставшиеся параметры
+
+function sum(...numbers) { // превратит любое кол-во параметров в массив параметров
+	let sum = 0;
+
+	numbers.forEach(function (number) { // поэтому можно использовать forEach для перебора массива
+		sum += number;
+	});
+
+	console.log(sum);
+}
+
+sum(2,3,4,1);
+
+
+// сложить все числа в массиве через reduce
+
+function reduceSum(array) {
+	var result = array.reduce(function (prevValue, currentValue) {
+		return prevValue + currentValue;
+	});
+
+	return result;
+}
+
+console.log(reduceSum([1,2,3])); // 6
+
+
+//Цикл for of
+
+let browsers = ['Chrome', 'Opera', 'Edge', 'Safari', 'Opera'];
+
+for (let browser in browsers) {
+	console.log(browser); // 0,1,2,3,4 потому что for in выводит индексы
+}
+
+//правильный вариант вывода браузеров через for in такой
+
+for (let index in browsers) {
+	console.log(browsers[index]); // 'Chrome', 'Opera', 'Edge', 'Safari', 'Opera'
+}
+
+
+// или же можно просто использовать for of
+
+for (let browser of browsers) {
+	console.log(browser); // 'Chrome', 'Opera', 'Edge', 'Safari', 'Opera'
+}
