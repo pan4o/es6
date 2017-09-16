@@ -171,3 +171,91 @@ for (let index in browsers) {
 for (let browser of browsers) {
 	console.log(browser); // 'Chrome', 'Opera', 'Edge', 'Safari', 'Opera'
 }
+
+
+//Objects
+
+let firstName = 'Bill',
+	lastName = 'Gates',
+	email = 'billgates@microsoft.com';
+
+
+// в es6 можно указывать только названия свойст в виде переменных
+// так же при обьявлении метода убрать слова function и ":" оставив только название метода и скобки
+
+let bill = {
+	firstName,
+	lastName,
+	email,
+	sayHello() {
+		console.log(`Hi my name is ${this.firstName} ${this.lastName}`);
+	}
+};
+
+
+bill.sayHello();
+
+function createCar(property, value) {
+	var car = {};
+
+	car[property] = value;
+
+	return car;
+}
+
+console.log(createCar('number', 1234));
+
+//тоже самое, только в es6. тут квадратные скобки можно использовать прямо в литерале обьекта
+
+function createCarTest(property, value) {
+	return {
+		[property]: value,
+		//пример динамического название метода
+		['_get' + property]() {
+			return this[property];
+		}
+	}
+}
+
+console.log(createCarTest('numberTest', 123445));
+
+//Реализация геттера и сеттера на es5
+
+let tom = {
+	firstName: 'Tom',
+	lastName: 'Dwan'
+}
+
+Object.defineProperty(tom, 'fullName', {
+	get: function () {
+		return this.firstName + ' ' + this.lastName;
+	},
+	set: function (value) {
+		return this.firstName = value;
+	}
+});
+
+console.log(tom.fullName); // Tom Dwan
+
+tom.fullName = 'Bill';
+
+console.log(tom.fullName); //Bill Dwan
+
+//тоже самое на es6
+
+let tim = {
+	firstName: 'Tim',
+	lastName: 'Burton',
+	get fullName() {
+		return this.firstName + ' ' + this.lastName;
+	},
+	set fullName(value) {
+		return this.lastName = value;
+	}
+}
+
+console.log(tim.fullName); // Tim Burton
+
+tim.fullName = 'Johnes';
+
+console.log(tim.fullName); // Tim Johnes
