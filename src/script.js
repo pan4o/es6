@@ -356,7 +356,17 @@ class Man {
 	}
 
 	set name(newName) {
-		this._name = newName;
+
+		if (this._name == newName) {
+
+			this._name = `${newName} again`;
+
+		} else {
+
+			this._name = newName;
+
+		}
+
 	}
 
 }
@@ -365,7 +375,11 @@ let tonny = new Man('tonny');
 
 console.log(tonny.name); //TONNY
 
-tonny.name = "Antoha";
+tonny.name = "tonny";
+
+console.log(tonny.name); //TONNY TONNY
+
+tonny.name = 'antoha';
 
 console.log(tonny.name); //ANTOHA
 
