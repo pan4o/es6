@@ -259,3 +259,114 @@ console.log(tim.fullName); // Tim Burton
 tim.fullName = 'Johnes';
 
 console.log(tim.fullName); // Tim Johnes
+
+
+//classes
+
+class Task {
+
+	constructor(title = Task.getDefaultTitle()) {
+
+		this.title = title;
+		this._done = false;
+
+		Task.count += 1;
+
+		console.log('class is created');
+
+	}
+
+	complete() {
+		this.done = true;
+	}
+
+	get done() {
+		return this._done ? 'completed' : 'non compeleted';
+	}
+
+	set done(value) {
+
+		if (value !== undefined && typeof value === 'boolean') {
+
+			this._done = value;
+
+		} else {
+
+			console.error('error');
+
+		}
+
+	}
+
+	static getDefaultTitle () {
+		return 'this is default title';
+	}
+
+}
+
+Task.count = 0;
+
+let task = new Task('random text');
+let newTask = new Task('random text 2');
+let thirdTask = new Task();
+
+console.log(typeof Task); // function
+
+console.log(task instanceof Task); // true
+
+console.log(task.title);
+
+console.log(newTask.title);
+
+
+console.log(newTask._done,'newTask._done'); //false
+
+newTask.complete();
+
+console.log(newTask._done,'newTask._done'); //true
+
+console.log(Task.count);
+
+console.log(thirdTask.title); // this is default title
+
+// thirdTask.getDefaultTitle() будет ошибка, т.к. статические методы есть только у самого класса,
+// а не у экземпляров созданных с его помощью
+
+let doneTest = new Task();
+
+console.log(doneTest.done); // non competed
+console.log(doneTest._done); // false
+
+doneTest.complete();
+
+console.log(doneTest.done); //completed
+console.log(doneTest._done); //true
+
+console.log('==========')
+
+class Man {
+
+	constructor(name) {
+		this._name = name
+	}
+
+
+	get name() {
+		return this._name.toUpperCase();
+	}
+
+	set name(newName) {
+		this._name = newName;
+	}
+
+}
+
+let tonny = new Man('tonny');
+
+console.log(tonny.name); //TONNY
+
+tonny.name = "Antoha";
+
+console.log(tonny.name); //ANTOHA
+
+//pizda
