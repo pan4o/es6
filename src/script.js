@@ -383,4 +383,63 @@ tonny.name = 'antoha';
 
 console.log(tonny.name); //ANTOHA
 
-//pizda
+
+//inheritance
+console.log('==============');
+
+class Task2 {
+	constructor(title) {
+		this.title = title;
+		this.done = false;
+	}
+
+	complete() {
+		this.done = true;
+		console.log(`task ${this.title} is done`);
+	}
+}
+
+class SubTask extends Task2 {
+	constructor(title, parent) {
+		super(title);
+		this.parent = parent
+	}
+
+	complete() {
+		super.complete();
+	}
+}
+
+let t = new Task2('learn Javascript');
+let st = new SubTask('learn es6', t);
+
+t.complete(); //task learn javascript is done
+st.complete();//task lear es6 is done
+
+
+class Cons {
+	constructor(title) {
+		this.title = title;
+	}
+
+	show() {
+		console.log(this.title);
+	}
+}
+
+class Ex extends Cons {
+	constructor(title) {
+		super(title);
+	}
+
+	show() {
+		super.show();
+		console.log(this.title)
+	}
+}
+
+let a = new Cons('first');
+let b = new Ex('second');
+
+a.show();
+b.show();
