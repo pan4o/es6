@@ -377,7 +377,7 @@ console.log(tonny.name); //TONNY
 
 tonny.name = "tonny";
 
-console.log(tonny.name); //TONNY TONNY
+console.log(tonny.name); //TONNY AGAIN
 
 tonny.name = 'antoha';
 
@@ -443,3 +443,32 @@ let b = new Ex('second');
 
 a.show();
 b.show();
+
+//first
+//second
+//second
+
+
+
+//arrow functions
+
+let addNum = (a, b) => a + b;
+
+console.log(addNum(1, 3));
+
+let login = () => console.log('logged');
+
+login(); // logged
+
+let multiply = (x, y) => {
+	let result = x * y;
+	return result;
+}
+
+console.log(multiply(2, 3)); // 6
+
+let getJohn = () => ({
+	name: 'John'
+});
+
+console.log(getJohn()); // { name: "John" }
