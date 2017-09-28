@@ -472,3 +472,32 @@ let getJohn = () => ({
 });
 
 console.log(getJohn()); // { name: "John" }
+
+
+(() => console.log('test'))(); //test
+
+let numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+var sum = 0;
+
+numbers2.forEach(item => sum += item);
+
+console.log(sum);
+
+let suqared = numbers2.map(n => n * n);
+
+console.log(suqared);
+
+
+let randomPerson = {
+	name: 'Bob',
+
+	greet: function () {
+		setTimeout(() => {
+			console.log('Hello, my name is ' + this.name);
+			console.log(this);
+		}, 2000);
+	}
+}
+
+randomPerson.greet();
