@@ -501,3 +501,57 @@ let randomPerson = {
 }
 
 randomPerson.greet();
+
+//Деструктивное присваивание
+
+let [js, py, ru, php] = ['Javascript', 'Pythone', 'Ruby', 'PHP'];;
+
+console.log(js); //Javascript
+console.log(py); //Pythone
+console.log(ru); //Ruby
+console.log(php); //PHP
+
+let scores = [1, 2, 3, 4, 5, 6, 7];
+
+let [low, ...hight] = scores;
+
+console.log(low); // 1;
+console.log(hight); // [2,3,4,5,6,7];
+
+let defaultValueArr = [1, 3];
+
+let [defalutFirst, defalutSecond, defalutThird = 5] = defaultValueArr;
+
+console.log(defalutFirst, defalutSecond, defalutThird); // 1, 3, 5
+
+let test_vars = [1, 2, [3, 4]];
+
+let [t1, t2, [t3, t4]] = test_vars;
+
+console.log(t1, t2, t3, t4); // 1, 2, 3, 4
+
+function computeScore ([low, mid]) {
+	console.log(low, mid);
+}
+
+computeScore([3, 4]); // 3, 4
+
+function getScores () {
+	return [5, 6, 7];
+}
+
+console.log(getScores()); // [5,6,7]
+
+let [five, six, seven] = getScores();
+
+console.log(five); //5
+console.log(six); //6
+console.log(seven); //7
+
+let yes = 'yes';
+let no = 'no';
+
+[yes, no] = [no, yes];
+
+console.log(yes); //no
+console.log(no); //yes
