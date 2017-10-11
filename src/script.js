@@ -555,3 +555,51 @@ let no = 'no';
 
 console.log(yes); //no
 console.log(no); //yes
+
+//диструктивное присваивние обьектов
+
+let kid = {
+	kidName: 'Jon',
+	kidLastName: 'Snow'
+};
+
+let {kidName, kidLastName} = kid;
+
+console.log(kidName, kidLastName);
+
+let {f: first, l: last, age = 26} =  {f: 'John', l: 'Doe'};
+
+console.log(first, last, age);
+
+let kiduser = {
+	kiduserName: 'Tony',
+	kiduserLastName: 'Danza',
+	socials: {
+		facebook: 'tonydanza',
+		twitter: 'tdanza'
+	}
+};
+
+let {kiduserName: kname, kiduserLastName: klastname, socials: {facebook}} = kiduser;
+
+console.log(kname, klastname, facebook);
+
+function post ({data: {kiduserName, kiduserLastName}, cache}) {
+	console.log(kiduserName, kiduserLastName, cache);
+}
+
+
+let res = post({data: kiduser, cache: false});
+
+function getSocials () {
+	return {
+		socials: {
+			facebook: 'tonydanza',
+			twitter: 'tdanza'
+		}
+	}
+}
+
+let { socials: { twitter } } = getSocials();
+
+console.log(twitter);
